@@ -1,2 +1,14 @@
-<h3>Welcome</h3>
-<p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
+<div class = container>
+	<div class = "col-md-8">
+		<div class="jumbotron">
+			<h1>Welcome to TechStorm!</h1>
+			<p><i>"It’s the LinkedIn of project management!” A way to communicate your desire
+				to be part of a group or project of your own idea or someone else’s</i></p>
+				<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+			</div>
+		</div>
+		<div class = "col-md-4">
+			<%= render 'devise/registrations/new' %>
+
+		</div>
+	</div>

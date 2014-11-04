@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030005545) do
+ActiveRecord::Schema.define(version: 20141102215347) do
+
+  create_table "collaborates", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "project_id"
+  end
+
+  add_index "collaborates", ["user_id", "project_id"], name: "index_collaborates_on_user_id_and_project_id"
+
+  create_table "projects", force: true do |t|
+    t.integer  "creator_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -27,6 +42,20 @@ ActiveRecord::Schema.define(version: 20141030005545) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "photo"
+    t.string   "works_in"
+    t.integer  "ranking"
+    t.boolean  "privacy"
+    t.text     "info"
+    t.integer  "visits"
+    t.string   "last_name"
+    t.string   "location"
+    t.string   "interest"
+    t.string   "website"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "linkedin"
+    t.string   "github"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

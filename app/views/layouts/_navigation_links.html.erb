@@ -1,11 +1,165 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? %>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+
+<div class="navbar-buttons navbar-header pull-right" role="navigation">
+	<ul class="nav ace-nav">
+
+		<!--Grey button-->
+		<li class="grey"> <!--Class changes from grey to grey-open-->
+			<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+				<i class="ace-icon fa fa-tasks"></i>
+
+			</a>
+			<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+				<li class="dropdown-header">
+					<i class="ace-icon fa fa-check"></i>
+					4 Tasks to complete
+				</li>
+
+				<li>
+					<a href="#"> <!--TODO Link to task-->
+						<div class="clearfix"> <!--TODO Learn clearfix-->
+							<span class="pull-left">Task Name</span>
+							<span class="pull-right">65%</span>
+						</div>
+
+						<div class="progress progress-mini">
+							<div style="width:65%" class="progress-bar"></div>
+						</div>
+					</a>
+				</li>
+
+				<li class="dropdown-footer">
+					<a href="#">
+						See tasks with details
+						<i class="ace-icon fa fa-arrow-right"></i>
+					</a>
+				</li>
+			</ul>
+		</li>
+
+		<!--Purple button-->
+		<li class="purple">
+			<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+				<i class="ace-icon fa fa-bell"></i>
+
+			</a>
+
+			<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+				<li class="dropdown-header">
+					<i class="ace-icon fa fa-exclamation-triangle"></i>
+					8 Notifications
+				</li>
+
+				<li>
+					<a href="#">
+						<div class="clearfix">
+							<span class="pull-left">
+								<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
+								New Comments
+							</span>
+							<span class="pull-right badge badge-info">+12</span>
+						</div>
+					</a>
+				</li>
+
+				<li class="dropdown-footer">
+					<a href="#">
+						See all notifications
+						<i class="ace-icon fa fa-arrow-right"></i>
+					</a>
+				</li>
+			</ul>
+		</li>
+
+		<li class="green">
+			<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+				<i class="ace-icon fa fa-envelope"></i>
+
+			</a>
+
+			<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+				<li class="dropdown-header">
+					<i class="ace-icon fa fa-envelope-o"></i>
+					5 Messages
+				</li>
+
+				<li class="dropdown-content">
+					<ul class="dropdown-menu dropdown-navbar">
+						<li>
+							<a href="#">
+								<img src="../assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+								<span class="msg-body">
+									<span class="msg-title">
+										<span class="blue">Alex:</span>
+										Message Summary
+									</span>
+
+									<span class="msg-time">
+										<i class="ace-icon fa fa-clock-o"></i>
+										<span>Message Time</span>
+									</span>
+								</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+
+				<li class="dropdown-footer">
+					<a href="inbox.html">
+						See all messages
+						<i class="ace-icon fa fa-arrow-right"></i>
+					</a>
+				</li>
+			</ul>
+		</li>
+
+		<!-- USER BUTTON -->
+		<li class="light-blue">
+			<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+				<span class="user-info">
+					<small>Welcome,</small>
+					<%= current_user.name %>
+				</span>
+
+				<i class="ace-icon fa fa-caret-down"></i>
+			</a>
+
+			<!--USER DROPDOWN LIST-->
+			<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+				<li><%= link_to 'Edit account', edit_user_registration_path %></li>
+				<li class="divider"></li>
+		  		<li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+		  		<li class="divider"></li>
+		 	 	<li><%= link_to 'Users', users_path %></li>
+
+
+			</ul>
+		</li>
+
+	</ul>
+
+</div>
+
 <% else %>
-  <li><%= link_to 'Sign in', new_user_session_path %></li>
-  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+
+
+
+<div class="form-imputs-navbar">
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
+
+	<%= f.text_field :email, :placeholder => "email" %>
+	
+	<%= f.password_field :password, :placeholder => "password" %>
+	
+	<%= f.check_box :remember_me %>
+	<%= f.submit 'Sign in' %>
+	<%= link_to "Forgot your password?", new_password_path(:user) %>
+
+	<% end %>
+</div>
+
+
+
 <% end %>
-<% if user_signed_in? %>
-  <li><%= link_to 'Users', users_path %></li>
-<% end %>
+

@@ -1,20 +1,71 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Myapp" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Myapp" %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "myapp" %></title>
+  <%= csrf_meta_tags %>
+  
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <!-- bootstrap & fontawesome -->
+  <link rel="stylesheet" type="text/css" href= "../../assets/stylesheets/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/stylesheets/ace-fonts.css" />
+  <link rel="stylesheet" href="../../assets/stylesheets/ace.min.css" id="main-ace-style" />
+  <!--[if lte IE 9]><link rel="stylesheet" href="../../assets/stylesheets/ace-part2.min.css" /><![endif]-->
+  <link rel="stylesheet" href="../../assets/stylesheets/ace-skins.min.css" />
+  <link rel="stylesheet" href="../../assets/stylesheets/ace-rtl.min.css" />
+  
+  <!--[if lte IE 9]><link rel="stylesheet" href="../../assets/stylesheets/ace-ie.min.css" /><![endif]-->
+  
+
+  <header>
+    <%= render 'layouts/navigation' %>
+  </header>
+</head>
+<body>
+
+  <div class = "container">
+   <%= render 'layouts/messages' %>
+   <%= yield %>
+ </div>
+
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+    window.jQuery || document.write("<script src='../../assets/javascripts/jquery.min.js'>"+"<"+"/script>");
+    </script>
+    <!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='../../assets/javascripts/jquery1x.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+if('ontouchstart' in document.documentElement) document.write("<script src='..assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="../../assets/javascripts/bootstrap.min.js"></script>
+<script src="../../assets/javascripts/ace-elements.min.js"></script>
+<script src="../../assets/javascripts/ace.min.js"></script>
+<script src="../../assets/javascripts/ace-extra.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="../../assets/javascripts/html5shiv.min.js"></script>
+<script src="../../assets/javascripts/respond.min.js"></script>
+<![endif]-->
+
+<link rel="stylesheet" href="http://assets/css/ace.onpage-help.css" />
+<link rel="stylesheet" href="..http://assets/js/themes/sunburst.css" />
+</body>
 </html>
