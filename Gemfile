@@ -3,7 +3,7 @@ ruby '2.1.3'
 
 
 gem 'therubyracer'
-
+gem 'pg'
 
 gem 'rails', '4.1.6'
 gem 'sass-rails', '~> 4.0.3'
@@ -27,7 +27,6 @@ group :development, :test do
   gem 'sqlite3'
 end
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
   gem 'unicorn'
 end
