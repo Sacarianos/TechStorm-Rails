@@ -1,7 +1,18 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-has_many :sends
+
+
+	
+
+	mount_uploader :avatar, AvatarUploader
+
+
+# app/views/users/_form.html.erb
+
+
+
+	has_many :sends
 	has_many :messages, :through => :sends
 
 	has_many :is_colleague_of

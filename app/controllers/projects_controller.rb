@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   respond_to :html
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :join]
+  before_action :set_creator, only: [:show, :edit, :update]
 
   def index
     @projects = Project.all
@@ -35,9 +36,18 @@ class ProjectsController < ApplicationController
     respond_with(@project)
   end
 
+  def join
+    
+    
+end
+
   private
     def set_project
       @project = Project.find(params[:id])
+    end
+
+    def set_creator
+      @creator = User.find(@project.creator_id)
     end
 
     def project_params

@@ -17,6 +17,6 @@ class Project < ActiveRecord::Base
 
 	has_many :tasks
 
-	scope :alphasort, lambda { order("projects.name ASC") }
+	 
 
 end

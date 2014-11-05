@@ -2,7 +2,13 @@
 <div >
   <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-      <img id="avatar" class="editable img-responsive" alt="profile pic" src= <%=asset_path('profile-pic.jpg')%> >
+    	<% if user.avatar_url.nil? %>
+			<img id="avatar" class="editable img-responsive" alt="profile pic" src= <%=asset_path('profile-pic.jpg')%> >
+		<%else%>
+    	<%= image_tag user.avatar_url(:display) %><br />
+    	<% end %>
+
+      
       <div class="caption">
         <h3><%= link_to user.name, user %></h3>
         <p>Field of Work: <%= user.works_in%> </p>

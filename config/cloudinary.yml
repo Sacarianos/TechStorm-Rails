@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: techstorm
+  api_key: '522121731279226'
+  api_secret: PVe1t4IkdRg4ZqKzQJivcPoYPBA
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: techstorm
+  api_key: '522121731279226'
+  api_secret: PVe1t4IkdRg4ZqKzQJivcPoYPBA
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: techstorm
+  api_key: '522121731279226'
+  api_secret: PVe1t4IkdRg4ZqKzQJivcPoYPBA
+  enhance_image_tag: true
+  static_image_support: false
