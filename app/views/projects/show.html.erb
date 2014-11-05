@@ -1,11 +1,69 @@
-<div class= "col-md-3" >
+<script type="text/javascript">
+$(document).ready(function(){ 
+    $("#myTab a").click(function(e){
+    	e.preventDefault();
+    	$(this).tab('show');
+    });
+});
+</script>
+
+
+
+<div class= "project-pic col-md-3" >
 	
 	<span class="profile-picture">
 		<img id="avatar" class="editable img-responsive" alt="profile pic" src= <%=asset_path('project.gif')%> >
 	</span>
 </div>
 <div class="jumbotron col-md-6">
-  <h1><%= @project.name %></h1>
-  <p>...</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+	<h1><%= @project.name %></h1>
+	<p><em><%= @project.slogan %></em></p>
+	<p><strong>Author: </strong><%= @project.creator_id %></p>
+	<p><a class="btn btn-success btn-lg" href="#" role="button">Join This Project!</a></p>
+
+</div>
+
+
+<div clss= "col-md-3">
+	
+<ol class="breadcrumb lala">
+  <li><i class="ace-icon fa  fa-eye "></i> 100</li>
+  <li><i class="ace-icon fa  fa-comment "></i> 3</li>
+  <li><i class="glyphicon glyphicon-user "></i> 23</li>
+</ol> 
+
+
+</div>
+<div class = "col-md-12">
+	
+
+<ul class="nav nav-tabs" id="myTab">
+        <li class="active"><a href="#overview">Overview</a></li>
+        <li><a href="#sectionB">Section B</a></li>
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="#dropdown1">Dropdown1</a></li>
+                <li><a href="#dropdown2">Dropdown2</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div id="overview" class="tab-pane fade in active">
+            <h3>Description</h3>
+            <p><%= @project.description %></p>
+        </div>
+        <div id="sectionB" class="tab-pane fade">
+            <h3>Section B</h3>
+            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+        </div>
+        <div id="dropdown1" class="tab-pane fade">
+            <h3>Dropdown 1</h3>
+            <p>WInteger convallis, nulla in sollicitudin placerat, ligula enim auctor lectus, in mollis diam dolor at lorem. Sed bibendum nibh sit amet dictum feugiat. Vivamus arcu sem, cursus a feugiat ut, iaculis at erat. Donec vehicula at ligula vitae venenatis. Sed nunc nulla, vehicula non porttitor in, pharetra et dolor. Fusce nec velit velit. Pellentesque consectetur eros.</p>
+        </div>
+        <div id="dropdown2" class="tab-pane fade">
+            <h3>Dropdown 2</h3>
+            <p>Donec vel placerat quam, ut euismod risus. Sed a mi suscipit, elementum sem a, hendrerit velit. Donec at erat magna. Sed dignissim orci nec eleifend egestas. Donec eget mi consequat massa vestibulum laoreet. Mauris et ultrices nulla, malesuada volutpat ante. Fusce ut orci lorem. Donec molestie libero in tempus imperdiet. Cum sociis natoque penatibus et magnis.</p>
+        </div>
+    </div>
 </div>

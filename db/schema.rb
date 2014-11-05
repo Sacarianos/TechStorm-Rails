@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104223541) do
+ActiveRecord::Schema.define(version: 20141105063448) do
 
   create_table "collaborates", id: false, force: true do |t|
     t.integer "user_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20141104223541) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slogan"
   end
 
   create_table "requires_skills", primary_key: "pid", force: true do |t|
