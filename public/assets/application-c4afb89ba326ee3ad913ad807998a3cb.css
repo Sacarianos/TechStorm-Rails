@@ -10,5 +10,13 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_self
+
  */
+@import url(ace-fonts.css);
+@import url(ace-ie.min.css);
+@import url(ace-part2.min.css);
+@import url(ace-rtl.min.css);
+@import url(ace-skins.min.css);
+@import url(ace.min.css);
+@import url(aframework_and_overrides.css);
+@import url(main.css);

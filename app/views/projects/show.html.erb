@@ -12,7 +12,7 @@ $(document).ready(function(){
 <div class= "project-pic col-md-3" >
 	
 	<span class="profile-picture">
-		<% unless @user.avatar_url.nil? %><%= image_tag @user.avatar_url %><br /><% end %>
+		<% unless @creator.avatar_url.nil? %><%= image_tag @creator.avatar_url %><br /><% end %>
 	</span>
 </div>
 <div class="jumbotron col-md-6">

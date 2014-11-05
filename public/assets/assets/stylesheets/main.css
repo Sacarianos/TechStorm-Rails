@@ -1,8 +1,25 @@
-// import the CSS framework
-@import "bootstrap-sprockets";
-@import "bootstrap";
+body {
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
 
-body { padding-top: 60px; }
+.form-imputs-navbar{
+ margin-top: 15px;
+}
+
+.fb_icon{
+  margin-right: 6.5px;
+}
+.social_links{
+margin-bottom: 12px;
+}
+
+
+
 
 // make all images responsive by default
 img {
@@ -56,6 +73,7 @@ section {
   margin: 0 auto;
 }
 .authform form {
+  margin-top: 30px;
   @extend .well;
   @extend .well-lg;
   padding-bottom: 40px;
