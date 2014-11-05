@@ -28,7 +28,7 @@
 													Send a message
 												</a>
 
-												<a href="#" class="btn btn-link">
+												<a href="http://<%= @user.website %>" class="btn btn-link">
 													<i class="ace-icon fa fa-globe bigger-125 blue"></i>
 													<%= @user.website %>
 												</a>
@@ -37,17 +37,26 @@
 											<div class="space-6"></div>
 
 											<div class="profile-social-links align-center">
-												<a href="#" class="tooltip-info" title="" data-original-title="Visit my Facebook">
+												<% unless @user.facebook.nil?%>
+												<a href="<%= @user.facebook %>" class="tooltip-info" title="" data-original-title="Visit my Facebook">
 													<i class="middle ace-icon fa fa-facebook-square fa-2x blue"></i>
 												</a>
-
-												<a href="#" class="tooltip-info" title="" data-original-title="Visit my Twitter">
+												<%end%>
+												<% unless @user.twitter.nil?%>
+												<a href="<%= @user.twitter %>" class="tooltip-info" title="" data-original-title="Visit my Twitter">
 													<i class="middle ace-icon fa fa-twitter-square fa-2x light-blue"></i>
 												</a>
-
-												<a href="#" class="tooltip-error" title="" data-original-title="Visit my Pinterest">
+												<%end%>
+												<% unless @user.github.nil?%>
+												<a href="<%= @user.github %>" class="tooltip-error" title="" data-original-title="Visit my Github">
 													<i class="middle ace-icon fa fa-github-square fa-2x red"></i>
 												</a>
+												<%end%>
+												<% unless @user.linkedin.nil?%>
+												<a href="<%= @user.linkedin %>" class="tooltip-error" title="" data-original-title="Visit my linkedin">
+													<i class="middle ace-icon fa fa-linkedin-square fa-2x black"></i>
+												</a>
+												<%end%>
 											</div>
 										</div>
 
@@ -175,10 +184,6 @@
 
 										</div> 
 
-										<table class="table table-striped">
-											...
-										</table>
-										
 									</div>
 								</div>
 							</div>
@@ -204,7 +209,7 @@
 								<div class="widget-body">
 									<div class="widget-main">
 										<p>
-											<%= current_user.info%>
+											<%= @user.info%>
 										</p>
 										
 									</div>
