@@ -12,7 +12,11 @@ $(document).ready(function(){
 <div class= "project-pic col-md-3" >
 	
 	<span class="profile-picture">
+<<<<<<< HEAD
 		<img id="avatar" class="editable img-responsive" alt="profile pic" src= <%=asset_path('project.gif')%> >
+=======
+		<% unless @creator.avatar_url.nil? %><%= image_tag @creator.avatar_url %><br /><% end %>
+>>>>>>> 2d238fd23dc7170035f91801cba313cab3100aad
 	</span>
 </div>
 <div class="jumbotron col-md-6">

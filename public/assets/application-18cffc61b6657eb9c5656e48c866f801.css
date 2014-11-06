@@ -10,9 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_self
-<<<<<<< HEAD
- *= require_tree 
-=======
->>>>>>> 2d238fd23dc7170035f91801cba313cab3100aad
+
  */
+
