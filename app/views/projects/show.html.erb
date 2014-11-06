@@ -12,11 +12,7 @@ $(document).ready(function(){
 <div class= "project-pic col-md-3" >
 	
 	<span class="profile-picture">
-<<<<<<< HEAD
 		<img id="avatar" class="editable img-responsive" alt="profile pic" src= <%=asset_path('project.gif')%> >
-=======
-		<% unless @creator.avatar_url.nil? %><%= image_tag @creator.avatar_url %><br /><% end %>
->>>>>>> 2d238fd23dc7170035f91801cba313cab3100aad
 	</span>
 </div>
 <div class="jumbotron col-md-6">
@@ -24,7 +20,7 @@ $(document).ready(function(){
 	<p><em><%= @project.slogan %></em></p>
 	<p><strong>Author: </strong><%= link_to @creator.name, @creator if @creator %></p>
 	<% if current_user.id == @creator %>
-    <p><a class="btn btn-primary btn-lg" href="" role="button">Delete Project!</a></p>
+	<p><a class="btn btn-primary btn-lg" href="" role="button">Delete Project!</a></p>
    <% else %>
    <p><a class="btn btn-primary btn-lg" href="" role="button">Join Project!</a></p>
     

@@ -78,7 +78,7 @@ section {
   margin: 0 auto;
 }
 .authform form {
-  margin-top: 30px;
+  
   @extend .well;
   @extend .well-lg;
   padding-bottom: 40px;

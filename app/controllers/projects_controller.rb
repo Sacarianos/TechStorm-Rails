@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   respond_to :html
   before_action :set_project, only: [:show, :edit, :update, :destroy, :join]
   before_action :set_creator, only: [:show, :edit, :update]
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
     @projects = Project.all
@@ -38,7 +39,7 @@ class ProjectsController < ApplicationController
 
   def join
      project = Project.find(params[:id])
-     collaborate = Colaborate.new(proyect_id: project.id, user_id: current_user.id)
+     collaborate = Collaborate.new(proyect_id: project.id, user_id: current_user.id)
      current_user.collaborates << collaborate
     
 end
