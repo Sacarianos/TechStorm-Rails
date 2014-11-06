@@ -1,3 +1,4 @@
+<%unless user_signed_in? %>
 <div class = container>
 	<div class = "col-md-8">
 		<div class="jumbotron">
@@ -7,11 +8,15 @@
 				<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 		</div>
 	</div>
+
+	
     <div class = "col-md-4">
 			<%= render 'devise/registrations/new' %>
-
 	</div>
 </div>
+<% else %>
+<p></br></br></br></br></br>You're in!</p>
+<%end %>
 
 
 

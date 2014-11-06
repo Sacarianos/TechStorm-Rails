@@ -4,8 +4,8 @@
 
 
 
-      
-    
+
+
 
 
 
@@ -13,6 +13,24 @@
 
 <div class="navbar-buttons navbar-header pull-right" role="navigation">
 	<ul class="nav ace-nav">
+
+
+		<li class="green"> <!--Class changes from grey to grey-open-->
+			<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+				<i class="fa fa-plus"></i>
+			</a>
+			<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+
+				<li class="dropdown-footer">
+					<a href="projects/new">
+						Create Project
+						<i class="ace-icon fa fa-arrow-right"></i>
+					</a>
+				</li>
+			</ul>
+		</li>
+
+
 
 		<!--Grey button-->
 		<li class="grey"> <!--Class changes from grey to grey-open-->
@@ -138,11 +156,11 @@
 			<!--USER DROPDOWN LIST-->
 			<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
 				<li><%= link_to 'Edit account', edit_user_registration_path %></li>
+				<li class="divider"></li>	
+				<li><%= link_to 'User', current_user %></li>
 				<li class="divider"></li>
-		  		<li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
-		  		<li class="divider"></li>
-		 	 	<li><%= link_to 'Users', users_path %></li>
-
+				<li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+				
 
 			</ul>
 		</li>

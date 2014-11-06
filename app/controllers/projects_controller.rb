@@ -37,7 +37,9 @@ class ProjectsController < ApplicationController
   end
 
   def join
-    
+     project = Project.find(params[:id])
+     collaborate = Colaborate.new(proyect_id: project.id, user_id: current_user.id)
+     current_user.collaborates << collaborate
     
 end
 
