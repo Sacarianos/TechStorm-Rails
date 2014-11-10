@@ -1,6 +1,28 @@
 <h1>Editing project</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+<%= form_for(@project) do |f| %>
+
+
+<form role="form">
+	<div class="form-group">
+		<label for="exampleInputEmail1">Description</label>
+		<span class="editable" id="description"> <%= f.text_area :description %> </span>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputEmail1">Slogen</label>
+		<span class="editable" id="description"> <%= f.text_field :slogan %> </span>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputEmail1">Project Link</label>
+		<span class="editable" id="description"> <%= f.text_field :link %> </span>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputEmail1">GitHub link Link</label>
+		<span class="editable" id="description"> <%= f.text_field :git %> </span>
+	</div>
+
+	
+	<%= f.submit 'Update', :class => 'button left' %>
+</form>
+
