@@ -5,8 +5,10 @@
 										<div>
 											<!-- #section:pages/profile.picture -->
 											<span class="profile-picture">
-												<% unless @user.avatar_url.nil? %><%= image_tag @user.avatar_url(:display) %><br /><% end %> 
-																							</span>
+												<% unless @user.avatar_url.nil? %><%= image_tag @user.avatar_url(:display) %><br />
+												<% else %> <img id="avatar" class="editable img-responsive" alt="profile pic" src= <%=asset_path('project.gif')%> >
+												<% end %> 
+											</span>
 
 											<!-- /section:pages/profile.picture -->
 											<div class="space-4"></div>
@@ -61,10 +63,10 @@
 										</div>
 
 										<!-- /section:pages/profile.contact -->
-										<div class="hr hr12 dotted"></div>
+										<!-- <div class="hr hr12 dotted"></div> -->
 
 										<!-- #section:custom/extra.grid -->
-										<div class="clearfix">
+										<!-- <div class="clearfix">
 											<div class="grid2">
 												<span class="bigger-175 blue">65</span>
 
@@ -78,10 +80,10 @@
 												<br />
 												Following
 											</div>
-										</div>
+										</div> -->
 
 										<!-- /section:custom/extra.grid -->
-										<div class="hr hr16 dotted"></div>
+										<!-- <div class="hr hr16 dotted"></div> -->
 									</div>
 
 									<div class="col-xs-12 col-sm-9">
@@ -92,7 +94,6 @@
 										<!-- Namw-->
 										<h4 class="blue">
 											<span class="middle"> <%= @user.name %> <%= @user.last_name %> </span>
-
 											<span class="label label-purple arrowed-in-right">
 												<i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
 												online
@@ -162,24 +163,31 @@
 											<h2>Projects</h2>
 
 											<span class="btn btn-app btn-sm btn-light no-hover">
-												<span class="line-height-1 bigger-170 blue"> <%= Projects.count %> </span>
+												<span class="line-height-1 bigger-170 blue"> <%= @projects.count %> </span>
 
 												<br />
 												<span class="line-height-1 smaller-90"> Started </span>
 											</span>
 
 											<span class="btn btn-app btn-sm btn-yellow no-hover">
-												<span class="line-height-1 bigger-170"> 32 </span>
+												<span class="line-height-1 bigger-170"><%= @i_follow.count %> </span>
 
 												<br />
-												<span class="line-height-1 smaller-90"> Follower </span>
+												<span class="line-height-1 smaller-90"> I'm following </span>
 											</span>
 
 											<span class="btn btn-app btn-sm btn-pink no-hover">
-												<span class="line-height-1 bigger-170"> 4 </span>
+												<span class="line-height-1 bigger-170"> <%= @collaborates.count %> </span>
 
 												<br />
-												<span class="line-height-1 smaller-90">Colaborator</span>
+												<span class="line-height-1 smaller-90">Collaborator</span>
+											</span>
+
+											<span class="btn btn-app btn-sm btn-purple no-hover">
+												<span class="line-height-1 bigger-170"> <%= @following_me.count %> </span>
+
+												<br />
+												<span class="line-height-1 smaller-90">follow me</span>
 											</span>
 
 										</div> 

@@ -1,0 +1,12 @@
+<%= link_to 'New Task', '../task/new' %>
+<table>
+<tr>
+<th>Task</th><th>User</th>
+</tr>
+
+  <% @tasks.each do |task| %>
+  <tr>
+  <td>task.task_name</td><td>task.uid</td>
+  </tr>
+  <%end%>
+</table>

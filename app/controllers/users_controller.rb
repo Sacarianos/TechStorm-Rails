@@ -2,13 +2,15 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
  
   def index
-    @users = User.all
+    @users = User.find_by_sql("SELECT * FROM users")
   end
 
   def show
     @user = User.find(params[:id])
-    @projects = Project.where(creator = params[:id])
-    
+    @projects = Project.find_by_sql "SELECT * FROM projects WHERE creator_id="+params[:id].to_s
+    @i_follow = Follows.find_by_sql "SELECT * FROM follows WHERE uid="+params[:id].to_s
+    @collaborates = Collaborates.find_by_sql "SELECT * FROM collaborates WHERE user_id="+params[:id].to_s
+    @following_me = Follows.find_by_sql "SELECT * FROM follows, projects WHERE follows.pid=projects.id AND creator_id="+params[:id].to_s
   end
 
   def edit

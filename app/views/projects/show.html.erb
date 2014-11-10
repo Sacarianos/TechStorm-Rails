@@ -1,125 +1,86 @@
+<!-- WHAT DO? -->
 <script type="text/javascript">
-$(document).ready(function(){ 
-    $("#myTab a").click(function(e){
-        e.preventDefault();
-        $(this).tab('show');
+    $(document).ready(function(){ 
+        $("#myTab a").click(function(e){
+            e.preventDefault();
+            $(this).tab('show');
+        });
     });
-});
 </script>
 
 
-
-<div class= "project-pic col-md-3" >
-    
-    <span class="profile-picture">
-        <img id="avatar" class="editable img-responsive" alt="profile pic" src= <%=asset_path('project.gif')%> >
-    </span>
-</div>
 <div class="jumbotron col-md-6">
-    <h1><%= @project.name %></h1>
-    <p><em><%= @project.slogan %></em></p>
-    <p><strong>Author: </strong><%= link_to @creator.name, @creator if @creator %></p>
-    <% if current_user.id == @creator.id %>
-    <p><a id="Deletebut" class="btn btn-primary btn-lg" href="" role="button">Delete Project!</a></p>
-   <% else %>
-   <p><a id="Joinbut" class="btn btn-primary btn-lg" href="" role="button">Join Project!</a></p>
-   <p><a id="Followbut" class="btn btn-primary btn-lg" href="" role="button">Follow Project!</a></p>
-   
-    <% end %>
+    <div class= "project-pic col-md-6" >
+        <span class="profile-picture">
+            <img id="avatar" class="editable img-responsive" alt="profile pic" src= <%=asset_path('project.gif')%> >
+        </span>
+    </div>
+
+    <h2><%= @project.name %> <ol class="breadcrumb lala">
+      <li><i class="ace-icon fa  fa-eye "></i> X </li><!-- Query for views goes here (?) -->
+      <li><i class="ace-icon fa  fa-comment "></i> X </li><!-- Query on comments_on goes here -->
+      <li><i class="glyphicon glyphicon-user "></i> X </li><!-- Query on contributors goes here -->
+  </ol> </h2>
+  <p><em><%= @project.slogan %></em></p>
+  <p><strong>Author: </strong><%= link_to @creator.name, @creator if @creator %></p>
+
+  <!-- Buttons that depend on user id -->
+  <% if current_user.id == @creator.id %>
+  <p>
+
+<%=button_to "Edit Project", "/project/edit", :class => "btn btn-success btn-lg"%>
+<%=button_to "Delete Project", {:controller => "projects", :action => "destroy"},:class => "btn btn-danger btn-lg" %>
+  </p>
+  <% else %>
+  <p>
+    <%=button_to "Contribute", {:controller => :projects, :action => :edit}, :class => "btn btn-primary btn-lg"%>
+    <%=button_to "Follow", {},:class => "btn btn-success btn-lg" %>
+</p>
+<% end %>
 </div>
 
 
-<div class= "col-md-3">
-    
-<ol class="breadcrumb lala">
-  <li><i class="ace-icon fa  fa-eye "></i> 100</li>
-  <li><i class="ace-icon fa  fa-comment "></i> 3</li>
-  <li><i class="glyphicon glyphicon-user "></i> 23</li>
-</ol> 
-
-
-</div>
-<div class = "col-md-12">
-    
-
-<ul class="nav nav-tabs" id="myTab">
+<!-- Tabbed content -->
+<div class = "col-md-6">
+    <ul class="nav nav-tabs" id="myTab">
         <li class="active"><a href="#overview">Overview</a></li>
         <li><a href="#sectionB">Requirements</a></li>
-        <li><a href="#sectionC">Progress</a></li>
-        
+        <li><a href="#sectionC">Tasks</a></li>
+        <li><a href="#sectionD">Contributors</a></li>
+        <li><a href="#sectionE">Followers</a></li>
     </ul>
-    <div class="tab-content">
-        <div id="overview" class="tab-pane fade in active">
 
+    <div class="tab-content">
+
+        <div id="overview" class="tab-pane fade in active">
             <h3>Description</h3>
             <p><%= @project.description %></p>
-            <div class= "col-md-6">
-                <h3>Collaborators</h3>
-                
-            </div>
-            <div class= "col-md-6">
-                <h3>Followers</h3>
-                
-            </div>
-            
-            <% if @link != nil %>
-            <div class= "col-md-6">
-                <h3>Project Link</h3>
-                <a href="<%= @project.link %>" class="tooltip-info" title="" data-original-title="Visit my Page">
-                    <i class="middle ace-icon fa fa-facebook-globe fa-2x blue"></i>
-                </a>
-                
-            </div>
-            <% end %>
-                <% if @git != nil %>
-            <div class= "col-md-6">
-                <h3>GitHub Rrepocitory</h3>
-                
-            </div>
-            <% end %>
-
         </div>
-
 
         <div id="sectionB" class="tab-pane fade">
             <h3>Requirements</h3>
-            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+            <p>Query for requires tasks goes here</p>
         </div>
+
         <div id="sectionC" class="tab-pane fade">
-            <h3>Progress</h3>
-            <p>WInteger convallis, nulla in sollicitudin placerat, ligula enim auctor lectus, in mollis diam dolor at lorem. Sed bibendum nibh sit amet dictum feugiat. Vivamus arcu sem, cursus a feugiat ut, iaculis at erat. Donec vehicula at ligula vitae venenatis. Sed nunc nulla, vehicula non porttitor in, pharetra et dolor. Fusce nec velit velit. Pellentesque consectetur eros.</p>
+            <h3>Tasks</h3>
+            <%= render 'task_index.html.erb' %>
         </div>
-        
+
+        <div id="sectionD" class="tab-pane fade">
+            <h3>Contributors</h3>
+            <p>Query for collaborates goes here</p>
+        </div>
+
+        <div id="sectionE" class="tab-pane fade">
+            <h3>Followers</h3>
+            <p>Query for follows goes here</p>
+        </div>
     </div>
 </div>
 
-<script type="type/javascript">
-$(function(){
-
-$('#Joinbut').on('click', function (e) {
-
-   <%=@connection = ActiveRecord::Base.connection %>
-<% @connection.exec_query("insert into collaborates values ("+current_user.id.to_s+","+@project.id.to_s+");") %>
-
-});
-
-
-
-$('#Deletebut').on('click', function (e) {
-
-   <%=@connection = ActiveRecord::Base.connection %>
-<% @connection.exec_query("Delete from  projects where id="+@project.id.to_s) %>
-
-});
-
-
-$('#Followbut').on('click', function (e) {
-
-   <%=@connection = ActiveRecord::Base.connection %>
-<% @connection.exec_query("insert into follows values ("+current_user.id.to_s+","+@project.id.to_s+");") %>
-
-});
-
-    
-
-});</script>
+<% if @git != nil %>
+<div class= "col-md-6">
+<h3>GitHub Repository</h3>      
+</div>
+<% end %>

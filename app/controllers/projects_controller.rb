@@ -10,6 +10,10 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @tasks = Task.find_by_sql "SELECT task_name, uid
+    FROM tasks, works_on
+    WHERE tasks.tid=works_on.tid
+    AND tasks.pid="+params[:id].to_s
     respond_with(@project)
   end
 
@@ -19,6 +23,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    respond_with(@project)
   end
 
   def create
