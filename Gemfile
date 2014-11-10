@@ -4,6 +4,7 @@ ruby '2.1.3'
 
 gem 'therubyracer'
 gem 'pg'
+gem "nested_form"
 
 gem 'carrierwave'
 gem 'cloudinary'

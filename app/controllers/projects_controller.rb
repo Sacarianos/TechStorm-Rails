@@ -5,12 +5,14 @@ class ProjectsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
-    @projects = Project.all
+    @projects = Project.find_by_sql "SELECT *
+    FROM projects;"
+
     respond_with(@projects)
   end
 
   def show
-    @tasks = Task.find_by_sql "SELECT task_name, uid
+    @tasks = Task.find_by_sql "SELECT *
     FROM tasks, works_on
     WHERE tasks.tid=works_on.tid
     AND tasks.pid="+params[:id].to_s
@@ -38,8 +40,13 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.destroy
-    respond_with(@project)
+    @project= Project.delete_all("id="+params[:id].to_s)
+redirect_to action: 'index'
+end
+
+  def delete
+    @project= Project.delete_all("id="+params[:id].to_s)
+    redirect_to "/index"
   end
 
   def join
@@ -59,6 +66,6 @@ end
     end
 
     def project_params
-      params.require(:project).permit(:creator_id, :name, :description)
+      params.require(:project).permit(:creator_id, :name, :description, tasks_attributes: [:id, :name, :_destroy])
     end
 end

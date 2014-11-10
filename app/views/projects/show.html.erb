@@ -10,34 +10,40 @@
 
 
 <div class="jumbotron col-md-6">
-    <div class= "project-pic col-md-6" >
-        <span class="profile-picture">
-            <img id="avatar" class="editable img-responsive" alt="profile pic" src= <%=asset_path('project.gif')%> >
-        </span>
-    </div>
-
-    <h2><%= @project.name %> <ol class="breadcrumb lala">
+<!-- Image on the left -->
+  <div class= "project-pic col-md-6" >
+    <span class="profile-picture">
+      <img id="avatar" class="editable img-responsive" alt="profile pic" src= <%=asset_path('project.gif')%> >
+    </span>
+  </div>
+<!-- Info on the right -->
+  <div class= "project-pic col-md-6" >
+    <h3><%= @project.name %> </h3>
+    <ol class="breadcrumb">
       <li><i class="ace-icon fa  fa-eye "></i> X </li><!-- Query for views goes here (?) -->
       <li><i class="ace-icon fa  fa-comment "></i> X </li><!-- Query on comments_on goes here -->
       <li><i class="glyphicon glyphicon-user "></i> X </li><!-- Query on contributors goes here -->
-  </ol> </h2>
-  <p><em><%= @project.slogan %></em></p>
-  <p><strong>Author: </strong><%= link_to @creator.name, @creator if @creator %></p>
+    </ol> 
+    <em><%= @project.slogan %></em>
+    <p><strong>Author: </strong><%= link_to @creator.name, @creator if @creator %></p>
 
-  <!-- Buttons that depend on user id -->
-  <% if current_user.id == @creator.id %>
-  <p><%=button_to "Edit Project", "/project/edit", :class => "btn btn-success btn-lg"%></p>
-    <p><%=button_to "Delete Project", {:controller => "projects", :action => "destroy"},:class => "btn btn-danger btn-lg" %></p>
-  
-  <% else %>
-  <form id="JoinProject">
-  <button type="submit" class="btn btn-primary btn-lg">Join</button>
-  </form>
-    <p><%=button_to "Follow", {},:class => "btn btn-success btn-lg" %></p>
-  <% end %>
+    <!-- Buttons that depend on user id -->
+    <% if current_user.id == @creator.id %>
+    <table>
+      <tr><td><%=button_to "Edit", "/project/edit", :class => "btn btn-success btn-lg"%></td>
+        <td><%=button_to "Delete", {:controller => "projects", :action => :destroy},:class => "btn btn-danger btn-lg",:method => :delete%></td>
+      </tr>
+    </table>
+    <% else %>
+    <table>
+      <tr>
+        <td><form id="JoinProject"><button type="submit" class="btn btn-primary btn-lg">Join</button></form></td>
+        <td><p><%=button_to "Follow", {},:class => "btn btn-success btn-lg" %></p></td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
 </div>
-
-
 <!-- Tabbed content -->
 <div class = "col-md-6">
     <ul class="nav nav-tabs" id="myTab">

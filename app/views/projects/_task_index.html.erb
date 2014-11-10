@@ -1,5 +1,17 @@
+<% if current_user.id == @creator.id %>
+<%= nested_form_for @projects do |f| %>
+
+<%= f.fields_for :tasks do |task_form| %>
+  <%= task_form.text_field :task_name %>
+  <%= task_form.link_to_remove "Remove this task" %>
+<% end %>
+<p><%= f.link_to_add "Add a task", :tasks %></p>
+<% end %>
+
+
 <%= link_to 'New Task', '../task/new' %>
-<table>
+<% end %>
+<table class="table table-hover">
 <tr>
 <th>Task</th><th>User</th>
 </tr>
