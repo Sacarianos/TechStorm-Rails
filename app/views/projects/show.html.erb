@@ -26,17 +26,15 @@
 
   <!-- Buttons that depend on user id -->
   <% if current_user.id == @creator.id %>
-  <p>
-
-<%=button_to "Edit Project", "/project/edit", :class => "btn btn-success btn-lg"%>
-<%=button_to "Delete Project", {:controller => "projects", :action => "destroy"},:class => "btn btn-danger btn-lg" %>
-  </p>
+  <p><%=button_to "Edit Project", "/project/edit", :class => "btn btn-success btn-lg"%></p>
+    <p><%=button_to "Delete Project", {:controller => "projects", :action => "destroy"},:class => "btn btn-danger btn-lg" %></p>
+  
   <% else %>
-  <p>
-    <%=button_to "Contribute", {:controller => :projects, :action => :edit}, :class => "btn btn-primary btn-lg"%>
-    <%=button_to "Follow", {},:class => "btn btn-success btn-lg" %>
-</p>
-<% end %>
+  <form id="JoinProject">
+  <button type="submit" class="btn btn-primary btn-lg">Join</button>
+  </form>
+    <p><%=button_to "Follow", {},:class => "btn btn-success btn-lg" %></p>
+  <% end %>
 </div>
 
 
@@ -84,3 +82,4 @@
 <h3>GitHub Repository</h3>      
 </div>
 <% end %>
+
