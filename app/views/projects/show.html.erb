@@ -30,7 +30,7 @@
     <!-- Buttons that depend on user id -->
     <% if current_user.id == @creator.id %>
     <table>
-      <tr><td><%=button_to "Edit", "/project/edit", :class => "btn btn-success btn-lg"%></td>
+      <tr><td><%=button_to "Edit",{:controller => "projects", :action => :edit}, :class => "btn btn-success btn-lg", :method => :get%></td>
         <td><%=button_to "Delete", {:controller => "projects", :action => :destroy},:class => "btn btn-danger btn-lg",:method => :delete%></td>
       </tr>
     </table>
