@@ -76,12 +76,25 @@
 
         <div id="sectionD" class="tab-pane fade">
             <h3>Contributors</h3>
-            <p>Query for collaborates goes here</p>
+            <p><%  @connection = ActiveRecord::Base.connection %>
+            <% result = @connection.exec_query('select name, last_name, users.id from users, collaborates where users.id = collaborates.user_id and collaborates.project_id ='+ @project.id.to_s+';') %>
+            <table>
+            <% result.each do |row| %>
+            <tr><td><%= link_to row["name"]+" "+row["last_name"], User.find(row["id"]) %></td></tr>
+            <% end %>
+            </table>
+            </p>
         </div>
 
         <div id="sectionE" class="tab-pane fade">
             <h3>Followers</h3>
-            <p>Query for follows goes here</p>
+             <p><%  @connection = ActiveRecord::Base.connection %>
+            <% result = @connection.exec_query('select name, last_name, users.id from users, follows where users.id = follows.uid and follows.pid ='+ @project.id.to_s+';') %>
+           <table>
+            <% result.each do |row| %>
+            <tr><td><%= link_to row["name"]+" "+row["last_name"], User.find(row["id"]) %></td></tr>
+            <% end %>
+            </table>
         </div>
     </div>
 </div>
