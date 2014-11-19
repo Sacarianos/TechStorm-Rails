@@ -50,11 +50,22 @@ end
   end
 
   def join
-     project = Project.find(params[:id])
-     collaborate = Collaborate.new(proyect_id: project.id, user_id: current_user.id)
-     current_user.collaborates << collaborate
-    
+  project = Project.find(params[:id])
+   @connection = ActiveRecord::Base.connection
+    result = @connection.exec_query('INSERT INTO collaborates VALUES('+project.id.to_s+','+current_user.id.to_s+");")
+    redirect_to action: 'show'
+     
+   
 end
+
+def follow
+  project = Project.find(params[:id])
+   @connection = ActiveRecord::Base.connection
+    result = @connection.exec_query('INSERT INTO follows VALUES('+current_user.id.to_s+','+project.id.to_s+");")
+    redirect_to action: 'show'
+
+
+  end
 
   private
     def set_project

@@ -9,6 +9,8 @@
 </script>
 
 
+
+
 <div class="jumbotron col-md-6">
 <!-- Image on the left -->
   <div class= "project-pic col-md-6" >
@@ -30,15 +32,16 @@
     <!-- Buttons that depend on user id -->
     <% if current_user.id == @creator.id %>
     <table>
-      <tr><td><%=button_to "Edit",{:controller => "projects", :action => :edit}, :class => "btn btn-success btn-lg", :method => :get%></td>
+      <tr>
+      <td><%=button_to "Edit",{:controller => "projects", :action => :edit}, :class => "btn btn-success btn-lg", :method => :get%></td>
         <td><%=button_to "Delete", {:controller => "projects", :action => :destroy},:class => "btn btn-danger btn-lg",:method => :delete%></td>
       </tr>
     </table>
     <% else %>
     <table>
       <tr>
-        <td><form id="JoinProject"><button type="submit" class="btn btn-primary btn-lg">Join</button></form></td>
-        <td><p><%=button_to "Follow", {},:class => "btn btn-success btn-lg" %></p></td>
+        <td><%=button_to "Join",{:controller => "projects", :action => :join}, :class => "btn btn-success btn-lg", :method => :get%></td>
+      <td><%=button_to "Follow",{:controller => "projects", :action => :follow}, :class => "btn btn-primary btn-lg", :method => :get%></td>
       </tr>
     </table>
     <% end %>
