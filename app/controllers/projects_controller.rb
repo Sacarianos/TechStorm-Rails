@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
     @tasks = Task.find_by_sql "SELECT *
     FROM tasks, works_on
     WHERE tasks.tid=works_on.tid
-    AND tasks.pid="+params[:id].to_s
+    AND tasks.project_id="+params[:id].to_s
     respond_with(@project)
   end
 
@@ -52,7 +52,7 @@ end
   def join
   project = Project.find(params[:id])
    @connection = ActiveRecord::Base.connection
-    result = @connection.exec_query('INSERT INTO collaborates VALUES('+project.id.to_s+','+current_user.id.to_s+");")
+    result = @connection.exec_query('INSERT INTO collaborates VALUES('+current_user.id.to_s+','+project.id.to_s+");")
     redirect_to action: 'show'
      
    
@@ -77,6 +77,6 @@ def follow
     end
 
     def project_params
-      params.require(:project).permit(:creator_id, :name, :description, tasks_attributes: [:id, :name, :_destroy])
+      params.require(:project).permit(:creator_id, :name, :description,:slogan,:git,:link, tasks_attributes: [:id, :task_name,:description, :_destroy])
     end
 end

@@ -21,12 +21,14 @@
   <!-- Info on the right -->
   <div class= "project-pic col-md-6" >
     <h3><%= @project.name %> </h3>
+    <em><%= @project.slogan %></em>
+    <br>
     <ol class="breadcrumb">
       <li><i class="ace-icon fa  fa-eye "></i> X </li><!-- Query for views goes here (?) -->
       <li><i class="ace-icon fa  fa-comment "></i> X </li><!-- Query on comments_on goes here -->
       <li><i class="glyphicon glyphicon-user "></i> X </li><!-- Query on contributors goes here -->
     </ol> 
-    <em><%= @project.slogan %></em>
+    
     <p><strong>Author: </strong><%= link_to @creator.name, @creator if @creator %></p>
 
     <!-- Buttons that depend on user id -->
@@ -76,6 +78,17 @@
 
     <div id="sectionC" class="tab-pane fade">
       <h3>Tasks</h3>
+      <p><%  @connection = ActiveRecord::Base.connection %>
+        <% result = @connection.exec_query('select task_name, description from tasks where tasks.project_id ='+ @project.id.to_s+';') %>
+        <table class="table table-striped">
+        <thead><tr><td>Task</td><td>Description</td></tr></thead>
+        <tbody>
+          <% result.each do |row| %>
+          <tr><td><%= row["task_name"] %></td> <td> <%=row["description"] %></td></tr>
+          <% end %>
+          </tbody>
+        </table>
+      </p>
       
     </div>
 
@@ -104,9 +117,17 @@
     </div>
   </div>
 
-  <% if @git != nil %>
+  <% if @project.git != nil %>
   <div class= "col-md-6">
-    <h3>GitHub Repository</h3>      
+    <h3>GitHub Repository</h3> 
+    <a href=<%=@project.git.to_s%>><%= @project.git.to_s%></a>     
+  </div>
+  <% end %>
+
+  <% if @project.link != nil %>
+  <div class= "col-md-6">
+    <h3>Project Link</h3> 
+    <a href=<%=@project.link.to_s%>><%= @project.link.to_s%></a>     
   </div>
   <% end %>
 

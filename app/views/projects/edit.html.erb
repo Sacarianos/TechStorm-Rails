@@ -1,7 +1,7 @@
 <h1>Editing project</h1>
 
 
-<%= form_for(@project) do |f| %>
+<%= nested_form_for(@project) do |f| %>
 
 
 <form role="form">
@@ -22,7 +22,15 @@
 		<span class="editable" id="description"> <%= f.text_field :git %> </span>
 	</div>
 
-	
+	<div class="thing">
+    <%= f.fields_for :tasks do |task_form| %>
+  <%= task_form.text_field :task_name %>
+<%= task_form.text_field :description %>
+  <%= task_form.link_to_remove "Remove this task" %>
+<% end %>
+<p><%= f.link_to_add "Add a task", :tasks %></p>
+  </div>
+
 	<%= f.submit 'Update', :class => 'button left' %>
 	<% end %>
 </form>
