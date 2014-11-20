@@ -15,8 +15,10 @@
   <!-- Image on the left -->
   <div class= "project-pic col-md-6" >
     <span class="profile-picture">
-      <img id="avatar" class="editable img-responsive" alt="profile pic" src= <%=asset_path('project.gif')%> >
-    </span>
+                        <% unless @project.propic_url.nil? %><%= image_tag @project.propic_url(:display) %><br />
+                        <% else %> <img id="avatar" class="editable img-responsive" alt="profile pic" src= <%=asset_path('project.gif')%> >
+                        <% end %> 
+                      </span>
   </div>
   <!-- Info on the right -->
   <div class= "project-pic col-md-6" >

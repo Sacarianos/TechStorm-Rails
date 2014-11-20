@@ -3,6 +3,9 @@ class Project < ActiveRecord::Base
 	has_many :tasks
 	accepts_nested_attributes_for :tasks,:allow_destroy => true
 
+mount_uploader :propic, PropicUploader
+
+
 	has_many :comments_on
 	has_many :users, :through => :comments_on
 

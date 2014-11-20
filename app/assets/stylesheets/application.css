@@ -12,5 +12,5 @@
  *
  *
  *=require_self
- *=require ./ace-part2.min.css
+ *=require_tree .
  */

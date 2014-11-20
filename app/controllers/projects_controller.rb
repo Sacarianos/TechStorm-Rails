@@ -77,6 +77,6 @@ def follow
     end
 
     def project_params
-      params.require(:project).permit(:creator_id, :name, :description,:slogan,:git,:link, tasks_attributes: [:id, :task_name,:description, :_destroy])
+      params.require(:project).permit(:creator_id, :name, :description,:slogan,:git,:link, :propic, tasks_attributes:[:id, :task_name,:description, :_destroy])
     end
 end
