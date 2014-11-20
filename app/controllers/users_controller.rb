@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
  
   def index
-    @users = User.find_by_sql("SELECT * FROM users")
+    @users = User.search(params[:search])
   end
 
   def show

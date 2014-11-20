@@ -10,7 +10,13 @@ class User < ActiveRecord::Base
 
 # app/views/users/_form.html.erb
 
-
+	def self.search(search)
+  		if search
+    		self.where('name like ?', "%#{search}%")
+  		else
+    		self.all
+  		end
+	end
 
 	has_many :sends
 	has_many :messages, :through => :sends

@@ -1,10 +1,40 @@
 <div class="container">
 
-    <h3>Users</h3>
+	
 
-    <% @users.each do |user| %>
+	<div></div>
+	
+	<h3>Users</h3>
+	<div class= "floatdude">
+		<%= form_tag users_path, :method => 'get' do %>
+		<%= text_field_tag :search, params[:search], :id => 'search_field' %>
+		<%= submit_tag "Search", :name => nil %> 
+		
+		<% end %>
+	</div>
+	<div class="dropdown floatdude">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+			Sort
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+			<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Newest-Oldest</a></li>
+			<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Oldest-Newest</a></li>
+			<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Alphabetical</a></li>
+			
+		</ul>
+	</div>
 
-    <%= render user %>
-    <% end %>
-  
+</div>
+
+
+
+
+
+
+<% @users.each do |user| %>
+
+<%= render user %>
+<% end %>
+
 </div>
