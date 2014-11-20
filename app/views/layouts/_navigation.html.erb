@@ -1,6 +1,17 @@
+
+
+
+
+
+
 <%# navigation styled for Bootstrap 3.0 %>
 <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
+<script type="text/javascript">
+    try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+  </script>
   <div class="navbar-container" id="navbar-container">
+
+  <!-- Toggler button when mobile -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
         <span class="sr-only">Toggle navigation</span>
@@ -11,14 +22,15 @@
       <%= link_to 'TechStorm', root_path, class: 'navbar-brand' %>
     </div>
 
+
     <div class="collapse navbar-collapse pull-left" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to 'Projects', projects_path %></li>
         <li><%= link_to 'Users', users_path %></li>
-        
-        
       </ul>
     </div>
+
+
     <div class="collapse navbar-collapse pull-right">
       <ul class="nav navbar-nav  navbar-left"><form class="navbar-form navbar-right" role="search">
         <div class="form-group">
@@ -31,7 +43,8 @@
       <ul class="nav navbar-nav  navbar-right">
         <%= render 'layouts/navigation_links' %>
       </ul>
+
+
     </div>
   </div>
-  
 </nav>

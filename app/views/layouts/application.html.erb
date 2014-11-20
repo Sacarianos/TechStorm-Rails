@@ -24,20 +24,18 @@
   <!--[if lte IE 9]><link rel="stylesheet" href="../../assets/stylesheets/ace-ie.min.css" /><![endif]-->
   
 
-  <header>
-    <%= render 'layouts/navigation' %>
-  </header>
 </head>
-<body>
+<body class="no-skin">
 
+  <%= render 'layouts/navigation' %>
 
-
-
+  <div class="main-container" id="main-container">
+    
+  <%= render 'layouts/side_bar' %>
   <%= render 'layouts/messages' %>
+  <%= yield %>
 
-  
-
-   <%= yield %>
+  </div>
 
     <!-- Javascripts
     ================================================== -->
