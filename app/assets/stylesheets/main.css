@@ -6,6 +6,9 @@ body {
     padding-top: 0px;
   }
 }
+.floatdude{
+  float: right;
+}
 
 .form-imputs-navbar{
  margin-top: 15px;
