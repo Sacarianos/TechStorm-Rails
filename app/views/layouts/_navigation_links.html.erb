@@ -2,7 +2,7 @@
 
 <% if user_signed_in? %>
 
-<div class="navbar-buttons navbar-header pull-right" role="navigation">
+<div class="navbar-buttons navbar-header pull-right visible-desktop visible-tablet hidden-phone" role="navigation">
 	<ul class="nav ace-nav">
 		<li class="green"> <!--Class changes from grey to grey-open-->
 			<a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -142,9 +142,9 @@
 
 			<!--USER DROPDOWN LIST-->
 			<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
-				<li><%= link_to 'Edit account', edit_user_registration_path %></li>
+				<li><%= link_to 'Edit my account', edit_user_registration_path %></li>
 				<li class="divider"></li>	
-				<li><%= link_to 'User', current_user %></li>
+				<li><%= link_to 'View my account', current_user %></li>
 				<li class="divider"></li>
 				<li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
 				
@@ -155,21 +155,54 @@
 </div>
 
 <% else %>
+<div class="navbar-buttons navbar-header pull-right" role="navigation">
+					<ul class="nav ace-nav">
+						<li class="green">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								Log In
+								<span class="badge badge-gray"></span>
+							</a>
 
+							<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+								<li class="dropdown-content">
+									<ul class="dropdown-menu dropdown-navbar">
+										<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
+										<li class="input-lg">
+											<%= f.text_field :email, :placeholder => "email" %>
+											<br></br>
+										</li>
 
-<div class="form-imputs-navbar">
-	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
+										<li class="input-lg">
+											<%= f.password_field :password, :placeholder => "password" %>
+										</li>
 
-	<%= f.text_field :email, :placeholder => "email" %>
-	
-	<%= f.password_field :password, :placeholder => "password" %>
-	
-	<%= f.check_box :remember_me %>
-	<%= f.submit 'Sign in' %>
-	<%= link_to "Forgot your password?", new_password_path(:user) %>
+										<li class="input-sm">
+											<%= f.check_box :remember_me %> Remember Me
+										</li>
 
-	<% end %>
-</div>
+										<li class="input-sm">
+											<%= link_to "Forgot your password?", new_password_path(:user) %>
+										</li>
+									</ul>
+								</li>
+
+								<li class="dropdown-footer input-sm">
+									<%= f.submit 'Sign in' %>
+								</li>
+								<% end %>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-container -->
+		</div> <!-- /.navbar-default -->
+
+<script type="text/javascript">
+	$('.dropdown-menu input').click(function(e) {
+        e.stopPropagation(); //This will prevent the event from bubbling up and close the dropdown when you type/click on text boxes.
+    });
+</script>
+
 
 <% end %>
 
